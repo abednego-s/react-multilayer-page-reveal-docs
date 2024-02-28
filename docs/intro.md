@@ -2,46 +2,142 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting Started
 
-Let's discover **Docusaurus in less than 5 minutes**.
-
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
+## Installation
 
 ```bash
-npm init docusaurus@latest my-website classic
+  npm install react-multilayer-page-reveal
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Usage/Examples
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+### Basic Usage
 
-## Start your site
+Wrap your components inside `MultiLayerPageRevealProvider` component
 
-Run the development server:
+```javascript
+import React from "react";
+import { MultiLayerPageRevealProvider } from "react-multilayer-page-reveal";
+import { MyComponent } from "./MyComponent";
 
-```bash
-cd my-website
-npm run start
+function App() {
+  return (
+    <MultiLayerPageRevealProvider preset="duo-move" direction="left">
+      <MyComponent />
+    </MultiLayerPageRevealProvider>
+  );
+}
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Start the animation by calling `reveal()` function from `useMultiLayerPageReveal` hook
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```javascript
+function MyComponent() {
+  const { reveal } = useMultiLayerPageReveal();
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+  function handleReveal() {
+    reveal();
+  }
+
+  return (
+    <>
+      <h1>Hello world</h1>
+      <button onClick={handleReveal}>Go</button>
+    </>
+  );
+}
+```
+
+### Call a function when animation starts or ends
+
+To call a function when animation starts, use `onStart` prop, or use `onEnd` to call a function when animation ends.
+
+```javascript
+function App() {
+  function onStart() {
+    console.log("animation starts");
+  }
+
+  function onEnd() {
+    console.log("animation ends");
+  }
+
+  return (
+    <MultiLayerPageRevealProvider
+      preset="duo-move"
+      direction="left"
+      onStart={onStart}
+      onEnd={onEnd}
+    >
+      <MyComponent />
+    </MultiLayerPageRevealProvider>
+  );
+}
+```
+
+### Start the animation with a callback and delay
+
+```javascript
+function MyComponent() {
+    ...
+    function handleReveal() {
+        reveal(() => {
+            console.log('hello')
+        }, 750);
+    }
+    ...
+    <button onClick={handleReveal}>Go</button>
+}
+```
+
+## Props
+
+**preset** (`simple` | `duo-move` | `triple-woosh` |`content-move`)
+
+Default: `simple`
+
+Presets of the animation style
+
+---
+
+**direction** (`left` | `right` | `top` | `bottom` | `cornerTopLeft` | `cornerTopRight` | `cornerBottomLeft` | `cornerBottomRight`)
+
+Default: `right`
+
+Direction from which the animation moves
+
+---
+
+**onStart** (`Function`)
+
+Callback function when animation starts
+
+---
+
+**onEnd** (`Function`)
+
+Callback function when animation ends
+
+---
+
+**layerColors** (`string[]`)
+
+Color(s) for the layers, e.g: `['#fff', '#ddd']`.
+
+`simple` preset requires 1 color, `duo-move` requires 2 colors,
+`tripe-woosh` and `content-move` require 3 colors.
+
+If no layer colors provided, these default colors will be applied:
+
+`simple`: ['#202023']
+
+`duo-move`:['#202023', '#3d4a41']
+
+`triple-woosh`:['#0092dd', '#fff', '#3e3a35'],
+
+`content-move`:['#202023', '#555', '#d1d1d1']
+
+## Basic Demo
+
+[Open Codesandbox](https://codesandbox.io/p/devbox/react-multilayer-page-reveal-demo-basic-wjzqhr)
