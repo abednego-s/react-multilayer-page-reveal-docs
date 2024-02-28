@@ -1,0 +1,14 @@
+.demoTitle {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.demoButton {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background: transparent;
+  font-size: 16px;
+  font-style: italic;
+  cursor: pointer;
+}

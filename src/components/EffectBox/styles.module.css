@@ -1,0 +1,27 @@
+.effectBox {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 1px solid #ddd;
+  min-width: 230px;
+}
+
+.effectBoxFormGroup {
+  margin-bottom: 15px;
+}
+
+.effectBoxLabel {
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.effectBoxSelect {
+  padding: 5px 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.effectBoxColorInput {
+  margin-right: 5px;
+}

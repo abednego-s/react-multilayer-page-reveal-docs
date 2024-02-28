@@ -1,0 +1,29 @@
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content {
+  display: block;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  padding: 0 15px;
+}
+
+.contentInner {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 530px) {
+  .content {
+    display: flex;
+    padding: 0;
+  }
+
+  .contentInner {
+    flex-grow: 1;
+    margin-left: 25px;
+    margin-top: 0;
+  }
+}
