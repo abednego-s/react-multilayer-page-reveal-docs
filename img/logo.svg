@@ -1,0 +1,5 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#EDF9B4" d="M10 10h50v180H10z" />
+  <path fill="#219ebc" d="M60 10h80v180H60z" />
+  <path fill="#023047" d="M140 10h50v180h-50z" />
+</svg>
