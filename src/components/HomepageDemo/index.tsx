@@ -12,7 +12,7 @@ const palette = ["#EDF9B4", "#219ebc", "#023047"];
 export function HomepageDemo() {
   const [preset, setPreset] = useState<Preset>("triple-woosh");
   const [direction, setDirection] = useState<Direction>("left");
-  const [layerColors, setLayerColors] = useState<string[]>(palette);
+  const [layerColors, setLayerColors] = useState(palette);
   const [page, setPage] = useState(0);
 
   function handleSwitchDemoPage() {
@@ -51,9 +51,9 @@ export function HomepageDemo() {
 
   return (
     <MultiLayerPageRevealProvider
-      preset={preset}
+      preset={preset as "triple-woosh"}
       direction={direction}
-      layerColors={layerColors}
+      layerColors={layerColors as [string, string, string]}
     >
       <div className={styles.container}>
         <div className={styles.content}>
